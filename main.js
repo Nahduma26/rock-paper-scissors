@@ -34,11 +34,10 @@ function playRound(playerSelection, computerChoice)
     // winner = 0, player
     // winner = 1, computer
     let winner = -1;
-    playerSelection = getPlayerSelection().toLowerCase();
-    computerChoice = getComputerChoice().toLowerCase();
     if (playerSelection == computerChoice)
     {
         winner = -1; // draw
+        console.log("Draw");
     }
     else{
         if (playerSelection == "rock")
@@ -46,12 +45,12 @@ function playRound(playerSelection, computerChoice)
             if (computerChoice == "scissors")
             {
                 winner = 0;
-                console.log("Player wins")
+                console.log("Player wins this round")
             }
             else if (computerChoice == "paper")
             {
                 winner = 1;
-                console.log("Computer wins")
+                console.log("Computer wins this round")
             }
         }
         else if (playerSelection == "scissors")
@@ -59,12 +58,12 @@ function playRound(playerSelection, computerChoice)
             if (computerChoice == "rock")
             {
                 winner = 1;
-                console.log("Computer wins")
+                console.log("Computer wins this round")
             }
             else if (computerChoice == "paper")
             {
                 winner = 0;
-                console.log("Player wins");
+                console.log("Player wins this round");
             }
         }
         else if (playerSelection == "paper")
@@ -72,13 +71,43 @@ function playRound(playerSelection, computerChoice)
             if (computerChoice == "rock")
             {
                 winner = 0;
-                console.log("Player wins");
+                console.log("Player wins this round");
             }
             else if (computerChoice == "scissors")
             {
                 winner = 1;
-                console.log("Computer wins");
+                console.log("Computer wins this round");
             }
         }
     }
+    return winner;
+}
+
+function playGame()
+{
+    let playerPoints = 0;
+    let compPoints = 0;
+    for (let i = 0; i < 5; i++)
+    {
+        let round = playRound(getPlayerSelection(), getComputerChoice().toLowerCase());
+        if (round == 0)
+        {
+            playerPoints++;
+        }
+        else if (round == 1)
+        {
+            compPoints++;
+        }
+    }
+    console.log(playerPoints);
+    console.log(compPoints);
+    if (playerPoints > compPoints)
+    {
+        return "Player wins the game";
+    }
+    else if (playerPoints < compPoints)
+    {
+        return "Computer wins the game";
+    }
+    return "Tie";
 }
