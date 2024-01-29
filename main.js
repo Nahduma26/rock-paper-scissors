@@ -28,3 +28,57 @@ function getPlayerSelection()
     console.log(selection.toLowerCase());
     return selection.toLowerCase();
 }
+
+function playRound(playerSelection, computerChoice)
+{
+    // winner = 0, player
+    // winner = 1, computer
+    let winner = -1;
+    playerSelection = getPlayerSelection().toLowerCase();
+    computerChoice = getComputerChoice().toLowerCase();
+    if (playerSelection == computerChoice)
+    {
+        winner = -1; // draw
+    }
+    else{
+        if (playerSelection == "rock")
+        {
+            if (computerChoice == "scissors")
+            {
+                winner = 0;
+                console.log("Player wins")
+            }
+            else if (computerChoice == "paper")
+            {
+                winner = 1;
+                console.log("Computer wins")
+            }
+        }
+        else if (playerSelection == "scissors")
+        {
+            if (computerChoice == "rock")
+            {
+                winner = 1;
+                console.log("Computer wins")
+            }
+            else if (computerChoice == "paper")
+            {
+                winner = 0;
+                console.log("Player wins");
+            }
+        }
+        else if (playerSelection == "paper")
+        {
+            if (computerChoice == "rock")
+            {
+                winner = 0;
+                console.log("Player wins");
+            }
+            else if (computerChoice == "scissors")
+            {
+                winner = 1;
+                console.log("Computer wins");
+            }
+        }
+    }
+}
